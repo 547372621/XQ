@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="static/jq.js"></script>
+    <style>
+        .container {
+            width: 665px;
+            height: 737px;
+            background: url("static/WOOD.JPG");
+        }
+
+        .qizi {
+            width: 73px;
+            height: 73px;
+            position: absolute;
+            background: url("static/COMIC/BRS.GIF");
+        }
+        .bche{
+            background: url("static/COMIC/BR.GIF");
+        }
+        .bche:hover{
+            background: url("static/COMIC/BRS.GIF");
+        }
+        .rche{
+            background: url("static/COMIC/RR.GIF");
+        }
+        .rche:hover{
+            background: url("static/COMIC/RRS.GIF");
+        }
+
+
+        .bma{
+            background: url("static/COMIC/BN.GIF");
+        }
+        .bma:hover{
+            background: url("static/COMIC/BNS.GIF");
+        }
+        .rma{
+            background: url("static/COMIC/RN.GIF");
+        }
+        .rma:hover{
+            background: url("static/COMIC/RNS.GIF");
+        }
+
+
+
+        .bxiang{
+            background: url("static/COMIC/BB.GIF");
+        }
+
+        .bxiang:hover{
+            background: url("static/COMIC/BB.GIF");
+        }
+        .rxiang{
+            background: url("static/COMIC/RB.GIF");
+        }
+        .rxiang:hover{
+            background: url("static/COMIC/RBS.GIF");
+        }
+
+        .bshi{
+            background: url("static/COMIC/BA.GIF");
+        }
+        .bshi:hover{
+            background: url("static/COMIC/BAS.GIF");
+        }
+        .rshi{
+            background: url("static/COMIC/RA.GIF");
+        }
+        .rshi:hover{
+            background: url("static/COMIC/RAS.GIF");
+        }
+
+
+        .bjiang{
+            background: url("static/COMIC/BK.GIF");
+        }
+        .bjiang:hover{
+            background: url("static/COMIC/BKS.GIF");
+        }
+        .rjiang{
+            background: url("static/COMIC/RK.GIF");
+        }
+        .rjiang:hover{
+            background: url("static/COMIC/RKS.GIF");
+        }
+
+
+        .bpao{
+            background: url("static/COMIC/BC.GIF");
+        }
+        .bpao:hover{
+            background: url("static/COMIC/BC.GIF");
+        }
+        .rpao{
+            background: url("static/COMIC/RC.GIF");
+        }
+        .rpao:hover{
+            background: url("static/COMIC/RCS.GIF");
+        }
+        .bzu{
+            background: url("static/COMIC/BP.GIF");
+        }
+        .bzu:hover{
+            background: url("static/COMIC/BPS.GIF");
+        }
+        .rzu{
+            background: url("static/COMIC/RP.GIF");
+        }
+        .rzu:hover{
+            background: url("static/COMIC/RPS.GIF");
+        }
+        .bkong{
+            background: url("static/COMIC/OO.GIF");
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+</div>
+<script>
+    $(function () {
+        var B = {
+                'CHE': {
+                    className:'bche'
+                },
+                'MA': {
+                    className:'bma'
+                },
+                'XIANG': {
+                    className:'bxiang'
+                },
+                'SHI':{
+                    className:'bshi'
+                },
+                'JIANG': {
+                    className:'bjiang'
+                },
+                'PAO': {
+                    className:'bpao'
+                },
+                'ZU': {
+                    className:'bzu'
+                }
+            },
+            R = {
+                'CHE': {
+                    className:'rche'
+                },
+                'MA': {
+                    className:'rma'
+                },
+                'XIANG': {
+                    className:'rxiang'
+                },
+                'SHI':{
+                    className:'rshi'
+                },
+                'JIANG': {
+                    className:'rjiang'
+                },
+                'PAO': {
+                    className:'rpao'
+                },
+                'ZU': {
+                    className:'rzu'
+                }
+            };
+        var N = {
+            className:'bkong'
+        };
+        var qiziArray = [
+            [B.CHE, B.MA, B.XIANG, B.SHI, B.JIANG, B.SHI, B.XIANG, B.MA, B.CHE],
+            [N, N, N, N, N, N, N, N, N],
+            [N, B.PAO, N, N, N, N, N, B.PAO, N],
+            [B.ZU, N, B.ZU, N, B.ZU, N, B.ZU, N, B.ZU],
+            [N, N, N, N, N, N, N, N, N],
+            [N, N, N, N, N, N, N, N, N],
+            [R.ZU, N, R.ZU, N, R.ZU, N, R.ZU, N, R.ZU],
+            [N, R.PAO, N, N, N, N, N, R.PAO, N],
+            [N, N, N, N, N, N, N, N, N],
+            [R.CHE, R.MA, R.XIANG, R.SHI, R.JIANG, R.SHI, R.XIANG, R.MA, R.CHE]
+        ];
+        var x = 0, y = 0;
+        var container = $('.container');
+        for (var i = 0; i < qiziArray.length; i++) {
+            var row = qiziArray[i];
+            for (var j = 0; j < row.length; j++) {
+                var className = row[j].className;
+                $('<div class="qizi"></div>')
+                    .css({left: x, top: y})
+                    .addClass(className)
+                    .appendTo(container);
+                x += 76
+            }
+            x = 0;
+            y += 76;
+        }
+
+        // 添加棋子
+        // container.click(function (e) {
+        //     console.log(e.offsetY,e)
+        //     $('<div class="che"></div>')
+        //         .offset({top: e.offsetY, left: e.offsetX})
+        //         .appendTo(container);
+        // })
+    })
+</script>
+</body>
+</html>
